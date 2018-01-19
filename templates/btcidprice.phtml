@@ -1,0 +1,66 @@
+{% extends "template.phtml" %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="text-center">Live Harga Market dari <a href="https://vip.bitcoin.co.id" target="_blank">https://vip.bitcoin.co.id</a></h4>
+        </div>
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">MARKET IDR</th>
+                        <th class="text-center">HARGA SEKARANG</th>
+                        <th class="text-left">( % ) 24</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr id="btcidr" class="strong"></tr>
+                        <tr id="bchidr" class="strong"></tr>
+                        <tr id="btgidr" class="strong"></tr>
+                        <tr id="ethidr" class="strong"></tr>
+                        <tr id="etcidr" class="strong"></tr>
+                        <tr id="ltcidr" class="strong"></tr>
+                        <tr id="ignisidr" class="strong"></tr>
+                        <tr id="nxtidr" class="strong"></tr>
+                        <tr id="wavesidr" class="strong"></tr>
+                        <tr id="stridr" class="strong"></tr>
+                        <tr id="xrpidr" class="strong"></tr>
+                        <tr id="xzcidr" class="strong"></tr>
+                    </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6 col-md-12 col-xs-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">MARKET BTC</th>
+                        <th class="text-center">HARGA SEKARANG</th>
+                        <th class="text-left">( % ) 24</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr id="btsbtc" class="strong"></tr>
+                        <tr id="drkbtc" class="strong"></tr>
+                        <tr id="dogebtc" class="strong"></tr>
+                        <tr id="ethbtc" class="strong"></tr>
+                        <tr id="ltcbtc" class="strong"></tr>
+                        <tr id="nxtbtc" class="strong"></tr>
+                        <tr id="strbtc" class="strong"></tr>
+                        <tr id="nembtc" class="strong"></tr>
+                        <tr id="xrpbtc" class="strong"></tr>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+    <script>var label = {{ coin|raw }};</script>
+    <script src="/lib/icon.js"></script>
+    <script src="/lib/liveprice.js"></script>
+{% endblock %}

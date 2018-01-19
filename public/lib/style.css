@@ -1,0 +1,59 @@
+*,html,body{
+    font-family: 'Anonymous Pro', monospace;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+#chat{
+    height: 450px;
+    overflow: auto;
+    background: #E6EBF1;
+    color: #000;
+    padding:20px;
+}
+
+.cnewbie {
+    color: #D4D4D4;
+}
+
+.cgray {
+    color: #5E5E5E;
+}
+
+.cbronze {
+    color: #5B2D00;
+}
+
+.cgold {
+    color: #FF8200;
+}
+
+.cdiamond {
+    color: #034AC4;
+}
+
+.cmastah {
+    color: #00E124;
+}
+
+.cjedi {
+    color: #B232B2;
+}
+
+.cpartner {
+    color: #DB0000;
+}
+
+.bgnaik{
+    background: #00E124;
+}
+
+.bgturun{
+    background: #DB0000;
+}
+
+.strong{
+    font-weight: bolder;
+}

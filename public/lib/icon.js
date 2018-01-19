@@ -1,0 +1,1 @@
+var iconfont = {'btcidr':'BTC','bchidr':'BCH','btgidr':'BTC-alt','ethidr':'ETH','etcidr':'ETC','ltcidr':'LTC','nxtidr':'NXT','wavesidr':'WAVES','stridr':'STR','xrpidr':'XRP','xzcidr':'XZC','btsbtc':'BTS','drkbtc':'DASH','dogebtc':'DOGE','ethbtc':'ETH','ltcbtc':'LTC','nxtbtc':'NXT','strbtc':'STR','nembtc':'XEM','xrpbtc':'XRP','ignisidr':'RISE'};

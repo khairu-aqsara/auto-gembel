@@ -50,6 +50,13 @@ $app->get('/src/coinhills', function($request,$response){
     return $this->view->render($response, 'coinhills.phtml');
 });
 
+$app->get('/delete-asset/{id}', function($request,$response,$args){
+    $id = $args['id'];
+    $stmt = $this->db->prepare("delete from aset where id='$id'");
+    $stmt->execute();  
+    return $response->withRedirect('/assets-monitor');
+});
+
 $app->get('/price/{id}', function($request,$response, $args){
     $id = $args['id'];
     $exchange = ['HitBTC','BitTrex','Poloniex','Bitstamp','Bitfinex','Coinbase','Kraken'];

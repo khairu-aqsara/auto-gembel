@@ -1,0 +1,15 @@
+{% extends "template.phtml" %}
+
+{% block body %}
+    <div class="row">
+        {% for c in coin %}
+            <div class="col-sm-4" style="margin-bottom:20px;">
+                <div class="coinmarketcap-currency-widget" data-currency="{{ c.uri }}" data-base="IDR" data-secondary="BTC" data-ticker="true" data-rank="false" data-marketcap="true" data-volume="true" data-stats="IDR" data-statsticker="true"></div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block script %}
+    {{ parent() }}
+    <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
+{% endblock %}

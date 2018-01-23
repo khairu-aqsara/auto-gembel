@@ -1,9 +1,20 @@
 <?php
 require '../src/setting.php';
 
+$app->get('/coinmarketcap', function($request,$response){
+    $coin = $this->db->query("select * from mcoin");
+    return $this->view->render($response, 'coinmarketcap.phtml',compact('coin'));
+});
+
+$app->get('/coinhils', function($request,$response){
+    return $this->view->render($response, 'coinhils.phtml');
+});
+
+
 $app->get('/', function($request,$response){
     return $this->view->render($response, 'home.phtml');
 });
+
 
 $app->get('/assets-monitor', function($request,$response){
     $coin = $this->db->query("select * from coin where exc='idr'");

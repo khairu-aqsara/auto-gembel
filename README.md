@@ -1,5 +1,7 @@
 ### Auto Gembel Monitoring 
 
+![Auto Gembel](4.jpg)
+
 untuk melihat perkembangan harga crypto currencies, Sumber utama diambil dari vip.bitcoin.co.id
 dan beberapa data lainya diambil dari public api yang tersedia, seperti:
 - CryptoCompare

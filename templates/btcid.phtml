@@ -48,13 +48,13 @@
                     {% set tmodal=0 %}
                     {% for as in aset %}
                         <tr>
-                            <td><i class="cc {{ as['name'] }}"></i> {{ as['label'] }}</td>
+                            <td><i class="logo_svg-22 {{ as['icon'] }}-color"></i> {{ as['label'] }}</td>
                             <td class="money text-right">{{ as['hbeli'] }}</td>
                             <td class="text-right moneycoin">{{ as['jml'] }}</td>
                             <td class="money text-right" data-modal="{{ as['modal'] }}">{{ as['modal'] }}</td>
                             <td class="vharga harga_{{ as['kode'] }} text-right" data-value=""></td>
-                            <td class="vmodal modal_{{ as['kode'] }} text-right"></td>
-                            <td class="vlaba laba_{{ as['kode'] }} text-right"></td>
+                            <td class="vmodal modal_{{ as['kode'] }} text-right" data-aset="sekarang"></td>
+                            <td class="vlaba laba_{{ as['kode'] }} text-right" data-rugi="sekarang"></td>
                             <td class="text-center">
                                 <a href="/delete-asset/{{ as['id'] }}"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>

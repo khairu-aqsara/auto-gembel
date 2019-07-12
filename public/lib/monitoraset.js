@@ -8,7 +8,7 @@ $(document).ready(function(){
     start_pusher_tradedata();
 
     function start_pusher_tradedata(){
-		pusher_tradedata = pusher.subscribe('tradedata-btcidr');
+		pusher_tradedata = pusher.subscribe('marketsummary');
 		pusher_tradedata.bind('update', function(data) {
             set_harga(data.prices);
             updateAset()
@@ -22,7 +22,7 @@ $(document).ready(function(){
             if( $('td.harga_'+key+'').length ){
                 $('td.harga_'+key+'').text($.number(value));
                 $('td.harga_'+key+'').attr("data-value", value);
-            } 
+            }
         })
     }
 
@@ -37,15 +37,20 @@ $(document).ready(function(){
             var hnow = $(this).attr("data-value")
             var asetnow = $(this).closest('td').next('td');
             var labarugi = $(this).closest('td').next('td').next('td');
-            asetnow.text($.number(hnow*aset));
+
+            hnow = hnow.replace(',','');
+            aset = aset.replace(',','');
+            modal = modal.replace(',','');
+
+            asetnow.text($.number(hnow*aset,2));
             var lbrg = (hnow*aset) - modal;
-            labarugi.text($.number(lbrg));
+            labarugi.text($.number(lbrg,2));
             labarugi.attr("data-value", lbrg);
             taset = (taset+(hnow*aset));
             tlaba = (tlaba + ((hnow*aset) - modal));
-            $("td#taset").text($.number(taset));
-            $("td#tlaba").text($.number(tlaba));
-            $("td#tlaba").attr("data-value", tlaba);
+            $("td#taset").text($.number(taset,2));
+            $("td#tlaba").text($.number(tlaba,2));
+            $("td#tlaba").attr("data-value",tlaba);
         });
     }
 
@@ -70,5 +75,5 @@ $(document).ready(function(){
             $("td#tlaba").css("color","#fff");
         }
     }
-    
+
 });

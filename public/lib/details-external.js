@@ -1,10 +1,10 @@
-MarketKap();
+CryptoCompareApi();
 function CryptoCompareApi(exchange)
 {
     var ur = (jenis == 'idr') ? "USD" : "BTC";
     $.ajax({
         type :'get',
-        url  : 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms='+lbl+'&tsyms='+ur+'&e='+exchange+'',
+        url  : 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms='+lbl+'&tsyms='+ur+'&e='+exchange+'&api_key=f2ea4fc1d8c79411fc196e4a883cfa8453c409c253d4b98dca60f4b2b223b9e5',
         success:function(xhr){
             if(xhr.hasOwnProperty('Response')){
                 $("#"+exchange+"").remove();
@@ -21,14 +21,14 @@ function CryptoCompareApi(exchange)
                     var change24h = parseFloat(arr2[0].BTC.CHANGEPCT24HOUR).toFixed(2);
                     var change1h =  parseFloat(arr2[0].BTC.CHANGE24HOUR).toFixed(8);
                 }
-                
-                var warna24 = (change24h < 0) ? "text-danger" : "text-success"; 
+
+                var warna24 = (change24h < 0) ? "text-danger" : "text-success";
                 var icon24 = (change24h < 0) ? "<span class='glyphicon glyphicon-triangle-bottom small'></span>" : "<span class='glyphicon glyphicon-triangle-top'></span>" ;
                 var per24 = "<div class='"+warna24+"'>24h:"+icon24+" "+change24h+" %</div>";
 
                 var hh = (jenis == 'idr') ? $.number(change1h) : change1h;
-                
-                var warna1h = (change1h < 0) ? "text-danger" : "text-success"; 
+
+                var warna1h = (change1h < 0) ? "text-danger" : "text-success";
                 var icon1h = (change1h < 0) ? "<span class='glyphicon glyphicon-triangle-bottom small'></span>" : "<span class='glyphicon glyphicon-triangle-top'></span>" ;
 
                 var per1h = "<div class='"+warna1h+"'>24h:"+icon1h+" "+hh+"</div>";
@@ -52,15 +52,15 @@ function MarketKap()
             }else{
                 var hrg = xhr[0].price_btc;
             }
-            
+
 
             var change24h = xhr[0].percent_change_24h;
-            var warna24 = (change24h < 0) ? "text-danger" : "text-success"; 
+            var warna24 = (change24h < 0) ? "text-danger" : "text-success";
             var icon24 = (change24h < 0) ? "<span class='glyphicon glyphicon-triangle-bottom small'></span>" : "<span class='glyphicon glyphicon-triangle-top'></span>" ;
             var per24 = "<div class='"+warna24+"'>24h:"+icon24+" "+change24h+" %</div>";
 
             var change1h = xhr[0].percent_change_1h;
-            var warna1h = (change1h < 0) ? "text-danger" : "text-success"; 
+            var warna1h = (change1h < 0) ? "text-danger" : "text-success";
             var icon1h = (change1h < 0) ? "<span class='glyphicon glyphicon-triangle-bottom small'></span>" : "<span class='glyphicon glyphicon-triangle-top'></span>" ;
 
             var per1h = "<div class='"+warna1h+"'>1h:"+icon1h+" "+change1h+" %</div>";

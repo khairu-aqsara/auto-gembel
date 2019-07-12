@@ -18,7 +18,7 @@ $app->get('/', function($request,$response){
 
 $app->get('/assets-monitor', function($request,$response){
     $coin = $this->db->query("select * from coin where exc='idr'");
-    $aset = $this->db->query("select a.*, b.label, b.name,b.id as kode from aset a join coin b on b.id=a.coin");
+    $aset = $this->db->query("select a.*, b.label, b.name,b.id as kode,b.mcoin as icon from aset a join coin b on b.id=a.coin");
     return $this->view->render($response, 'btcid.phtml',compact('coin','aset'));
 });
 
@@ -27,8 +27,8 @@ $app->post('/save-aset', function($request,$response){
     $insert = "insert into aset (coin,hbeli,jml,modal) values(:coin,:hbeli,:jml,:modal) ";
     $stmt = $this->db->prepare($insert);
     $result = $stmt->execute([
-            ':coin'=>$post['coin'], 
-            ':hbeli'=>$post['hbeli'], 
+            ':coin'=>$post['coin'],
+            ':hbeli'=>$post['hbeli'],
             ':jml'=>$post['jml_aset'],
             ':modal'=>($post['hbeli'] * $post['jml_aset'])
         ]
@@ -37,7 +37,7 @@ $app->post('/save-aset', function($request,$response){
     if($result)
         return $response->withRedirect('/assets-monitor');
     else
-        print_r($result); 
+        print_r($result);
 });
 
 $app->get('/src/btc-indonesia', function($request,$response){
@@ -64,20 +64,20 @@ $app->get('/src/coinhills', function($request,$response){
 $app->get('/delete-asset/{id}', function($request,$response,$args){
     $id = $args['id'];
     $stmt = $this->db->prepare("delete from aset where id='$id'");
-    $stmt->execute();  
+    $stmt->execute();
     return $response->withRedirect('/assets-monitor');
 });
 
 $app->get('/price/{id}', function($request,$response, $args){
     $id = $args['id'];
     $exchange = ['HitBTC','BitTrex','Poloniex','Bitstamp','Bitfinex','Coinbase','Kraken'];
-    $stmt = $this->db->prepare("select * from coin where id='$id'"); 
-    $stmt->execute(); 
+    $stmt = $this->db->prepare("select * from coin where id='$id'");
+    $stmt->execute();
     $row = $stmt->fetch();
-    $m = $this->db->prepare("select * from mcoin where id='".$row['mcoin']."'"); 
-    $m->execute(); 
+    $m = $this->db->prepare("select * from mcoin where id='".$row['mcoin']."'");
+    $m->execute();
     $mcoin = $m->fetch();
-    $idr = file_get_contents("https://api.fixer.io/latest?base=USD&symbols=IDR");
+    $idr = file_get_contents("http://data.fixer.io/api/latest?access_key=522a3f48b6ee1344d755f9c1a119f0b5&base=USD&symbols=IDR");
     return $this->view->render($response, 'details.phtml',compact('row','mcoin','idr','exchange'));
 });
 
